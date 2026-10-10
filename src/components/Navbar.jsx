@@ -202,7 +202,7 @@ export default function Navbar({ categories = [] }) {
       </div>
 
       {menuOpen && (
-        <div className="animate-slide-down border-t border-gray-100 px-6 py-4 lg:hidden">
+        <div className="animate-slide-down absolute inset-x-0 top-full border-t border-gray-100 bg-white px-6 py-4 shadow-lg lg:hidden">
           {searchForm("mb-3 md:hidden")}
           <nav onClick={() => setMenuOpen(false)} className="space-y-1">
             <Link to="/" className={menuLinkClass}>Home</Link>

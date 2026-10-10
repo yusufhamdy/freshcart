@@ -159,12 +159,12 @@ export default function Home() {
         {features.map(({ icon: Icon, title, text, iconColor, circle }) => (
           <div
             key={title}
-            className="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm transition-shadow duration-300 hover:shadow-xl"
+            className="flex flex-wrap items-center gap-3 rounded-xl bg-white p-4 shadow-sm transition-shadow duration-300 hover:shadow-xl"
           >
             <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full ${circle} ${iconColor}`}>
               <Icon className="text-lg" />
             </span>
-            <div>
+            <div className="min-w-0">
               <p className="text-sm font-semibold text-gray-800">{title}</p>
               <p className="text-xs text-gray-500">{text}</p>
             </div>
@@ -266,13 +266,13 @@ export default function Home() {
               </span>
             ))}
           </div>
-          <form onSubmit={handleSubscribe} noValidate className="mt-5 flex gap-3">
+          <form onSubmit={handleSubscribe} noValidate className="mt-5 flex flex-wrap justify-center gap-3">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
-              className="min-w-0 flex-1 rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm outline-none focus:border-green-600"
+              className="min-w-0 basis-64 grow rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm outline-none focus:border-green-600"
             />
             <button
               type="submit"
@@ -294,12 +294,12 @@ export default function Home() {
           <p className="text-xs font-semibold text-green-400">📱 MOBILE APP</p>
           <h2 className="mt-3 text-2xl font-bold">Shop Faster on Our App</h2>
           <p className="mt-2 text-sm text-gray-300">Get app-exclusive deals & 15% off your first order.</p>
-          <div className="mt-4 flex flex-wrap gap-3">
+          <div className="mt-4 flex flex-wrap justify-center gap-3">
             <a
               href="https://www.apple.com/app-store/"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 rounded-lg border border-gray-600 px-4 py-2 hover:border-white"
+              className="flex w-44 items-center justify-center gap-2 rounded-lg border border-gray-600 px-4 py-2 hover:border-white"
             >
               <FaApple className="text-xl" />
               <span className="text-xs leading-tight">Download on<br /><b className="text-sm">App Store</b></span>
@@ -308,7 +308,7 @@ export default function Home() {
               href="https://play.google.com/store"
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 rounded-lg border border-gray-600 px-4 py-2 hover:border-white"
+              className="flex w-44 items-center justify-center gap-2 rounded-lg border border-gray-600 px-4 py-2 hover:border-white"
             >
               <FaGooglePlay className="text-lg" />
               <span className="text-xs leading-tight">Get it on<br /><b className="text-sm">Google Play</b></span>

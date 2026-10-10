@@ -88,7 +88,7 @@ export default function Contact() {
       </section>
 
       <div className="mx-auto grid max-w-7xl gap-8 px-6 py-10 lg:grid-cols-[380px_1fr]">
-        <div className="space-y-4">
+        <div className="min-w-0 space-y-4">
           <InfoCard icon={FaPhoneAlt} title="Phone">
             <p>Mon-Fri from 8am to 6pm</p>
             <a href="tel:+18001234567" className="font-medium text-green-600 hover:underline">+1 (800) 123-4567</a>
@@ -122,7 +122,7 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="space-y-6">
+        <div className="min-w-0 space-y-6">
           <form onSubmit={handleSubmit} noValidate className="space-y-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
             <div>
               <h2 className="text-xl font-bold text-gray-900">Send us a Message</h2>
