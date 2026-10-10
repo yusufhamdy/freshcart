@@ -266,13 +266,13 @@ export default function Home() {
               </span>
             ))}
           </div>
-          <form onSubmit={handleSubscribe} noValidate className="mt-5 flex flex-wrap justify-center gap-3">
+          <form onSubmit={handleSubscribe} noValidate className="mt-5 grid grid-cols-1 auto-rows-[minmax(48px,auto)] gap-3 sm:grid-cols-[1fr_auto]">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
-              className="min-w-0 basis-64 grow rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm outline-none focus:border-green-600"
+              className="min-w-0 rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm outline-none focus:border-green-600"
             />
             <button
               type="submit"

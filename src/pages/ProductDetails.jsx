@@ -247,7 +247,7 @@ export default function ProductDetails() {
       </div>
 
       <div className="mt-8 overflow-hidden rounded-xl border border-gray-200 bg-white">
-        <div className="flex overflow-x-auto border-b border-gray-200 bg-slate-50">
+        <div className="flex overflow-x-auto overflow-y-hidden border-b border-gray-200 bg-slate-50">
           {tabs.map(({ id: tabId, label, icon: Icon }) => (
             <button
               key={tabId}
