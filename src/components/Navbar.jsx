@@ -3,9 +3,11 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   FaBars,
   FaChevronDown,
+  FaCog,
   FaEnvelope,
   FaGift,
   FaHeadset,
+  FaMapMarkerAlt,
   FaPhoneAlt,
   FaRegHeart,
   FaRegUserCircle,
@@ -167,7 +169,7 @@ export default function Navbar({ categories = [] }) {
           </div>
         </Link>
 
-        <div className="ml-auto flex items-center gap-4 md:ml-0">
+        <div className="ml-auto flex items-center gap-4 max-[360px]:gap-2 md:ml-0">
           <Link to="/wishlist" aria-label="Wishlist" className="relative text-lg text-gray-700 hover:text-green-600">
             <FaRegHeart />
             {badge(wishlistItems.length, "bg-red-500")}
@@ -216,6 +218,20 @@ export default function Navbar({ categories = [] }) {
                 <p className="flex items-center gap-2 px-3 py-2 text-sm text-gray-800">
                   <FaRegUser /> {user.name}
                 </p>
+                <Link
+                  to="/profile"
+                  onClick={() => setMenuOpen(false)}
+                  className={`${menuLinkClass} flex items-center gap-3`}
+                >
+                  <FaMapMarkerAlt className="text-gray-500" /> My Addresses
+                </Link>
+                <Link
+                  to="/profile/settings"
+                  onClick={() => setMenuOpen(false)}
+                  className={`${menuLinkClass} flex items-center gap-3`}
+                >
+                  <FaCog className="text-gray-500" /> Settings
+                </Link>
                 <button onClick={handleLogout} className="w-full rounded-lg px-3 py-2.5 text-left text-sm font-medium text-red-500 hover:bg-red-50">
                   Sign Out
                 </button>

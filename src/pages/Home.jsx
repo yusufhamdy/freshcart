@@ -244,7 +244,7 @@ export default function Home() {
 
       <section className="overflow-hidden">
         <div className="mx-auto grid max-w-7xl gap-6 px-6 py-8 lg:grid-cols-[1.4fr_1fr]">
-        <Reveal from="left">
+        <Reveal from="left" className="min-w-0">
         <div className="h-full rounded-2xl bg-green-50 p-8">
           <div className="flex items-center gap-3">
             <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-600 text-white">
@@ -255,7 +255,7 @@ export default function Home() {
               <p className="text-xs text-gray-500">50,000+ subscribers</p>
             </div>
           </div>
-          <h2 className="mt-3 text-3xl font-bold text-gray-800">
+          <h2 className="mt-3 text-2xl font-bold text-gray-800 sm:text-3xl">
             Get the Freshest Updates <span className="text-green-600">Delivered Free</span>
           </h2>
           <p className="mt-2 text-sm text-gray-600">Weekly recipes, seasonal offers & exclusive member perks.</p>
@@ -289,7 +289,7 @@ export default function Home() {
         </div>
         </Reveal>
 
-        <Reveal from="right">
+        <Reveal from="right" className="min-w-0">
         <div className="h-full rounded-2xl bg-gray-900 p-8 text-white">
           <p className="text-xs font-semibold text-green-400">📱 MOBILE APP</p>
           <h2 className="mt-3 text-2xl font-bold">Shop Faster on Our App</h2>

@@ -137,7 +137,7 @@ export default function ProductDetails() {
       </nav>
 
       <div className="mt-5 grid gap-6 lg:grid-cols-[360px_1fr]">
-        <div className="rounded-xl border border-gray-200 bg-white p-3">
+        <div className="min-w-0 rounded-xl border border-gray-200 bg-white p-3">
           <img src={images[imageIndex]} alt={product.title} className="h-96 w-full object-contain" />
           <div className="mt-3 flex gap-2 overflow-x-auto">
             {images.map((image, index) => (
@@ -154,7 +154,7 @@ export default function ProductDetails() {
           </div>
         </div>
 
-        <div className="rounded-xl border border-gray-200 bg-white p-6">
+        <div className="min-w-0 rounded-xl border border-gray-200 bg-white p-6">
           <div className="flex flex-wrap gap-2 text-xs">
             <span className="rounded-full bg-green-50 px-3 py-1 text-green-700">{product.category?.name}</span>
             <span className="rounded-full bg-gray-100 px-3 py-1 text-gray-600">{product.brand?.name}</span>

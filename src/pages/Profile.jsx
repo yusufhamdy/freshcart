@@ -46,19 +46,38 @@ export default function Profile() {
 
   async function handleSave(e) {
     e.preventDefault();
+    // Ignore a second submit while the first one is still running
+    if (saving) return;
     const found = validateAddress(form, true);
     setErrors(found);
     if (Object.keys(found).length > 0) return;
 
     setSaving(true);
     try {
-      // The API has no update request, so an edit replaces the old address
-      if (editing) await removeAddress(editing._id);
+      // The API has no update request, so an edit replaces the old address.
+      // The new address is created first: if that fails the original is still
+      // there, instead of being deleted with nothing to show for it.
       await addAddress({ ...form, name: form.name.trim(), city: form.city.trim(), details: form.details.trim() });
+
+      if (editing) {
+        try {
+          await removeAddress(editing._id);
+        } catch {
+          // The replacement exists but the old one could not be removed, so the
+          // account now holds both. Report that honestly rather than claiming a
+          // clean update, and reload so the list matches the server.
+          await loadAddresses().catch(() => {});
+          showToast("Address saved, but the old address could not be removed", "error");
+          setModalOpen(false);
+          return;
+        }
+      }
+
       await loadAddresses();
       showToast(editing ? "Address updated" : "Address added");
       setModalOpen(false);
     } catch (err) {
+      // Creation failed: the previous address is untouched.
       showToast(err.message, "error");
     } finally {
       setSaving(false);
@@ -66,13 +85,17 @@ export default function Profile() {
   }
 
   async function handleDelete(address) {
+    if (saving) return;
     if (!window.confirm("Delete this address?")) return;
+    setSaving(true);
     try {
       await removeAddress(address._id);
       await loadAddresses();
       showToast("Address deleted");
     } catch (err) {
       showToast(err.message, "error");
+    } finally {
+      setSaving(false);
     }
   }
 

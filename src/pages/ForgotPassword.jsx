@@ -85,7 +85,7 @@ export default function ForgotPassword() {
 
   return (
     <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-14 lg:grid-cols-2">
-      <div className="text-center">
+      <div className="min-w-0 text-center">
         <div className="mx-auto flex h-60 max-w-md items-center justify-center rounded-2xl bg-green-50">
           <span className="flex h-24 w-24 items-center justify-center rounded-2xl bg-white text-4xl text-green-600 shadow-lg">
             <FaLock />
@@ -102,7 +102,7 @@ export default function ForgotPassword() {
         </div>
       </div>
 
-      <div className="rounded-2xl bg-white p-8 shadow-xl">
+      <div className="min-w-0 rounded-2xl bg-white p-8 shadow-xl">
         <h1 className="text-center text-2xl font-bold text-green-600">
           Fresh<span className="text-gray-800">Cart</span>
         </h1>

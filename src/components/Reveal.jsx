@@ -7,7 +7,8 @@ const hiddenClasses = {
 };
 
 // Slides its content in from the left, right or bottom when it enters the screen
-export default function Reveal({ from = "left", children }) {
+// className is appended so callers can pass layout utilities such as min-w-0
+export default function Reveal({ from = "left", className = "", children }) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
 
@@ -28,7 +29,7 @@ export default function Reveal({ from = "left", children }) {
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-out ${
+      className={`transition-all duration-700 ease-out ${className} ${
         visible ? "translate-x-0 translate-y-0 opacity-100" : hiddenClasses[from]
       }`}
     >
