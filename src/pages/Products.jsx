@@ -281,7 +281,7 @@ export default function Products() {
         <div className={showFilters ? "block" : "hidden lg:block"}>{filters}</div>
 
         <div ref={resultsRef} className="scroll-mt-24">
-          <div className="mb-4 flex items-center justify-between">
+          <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-3">
             <button
               onClick={() => setShowFilters(!showFilters)}
               className="flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-1.5 text-sm lg:hidden"
@@ -304,7 +304,7 @@ export default function Products() {
                 <FaList />
               </button>
             </div>
-            <label className="ml-auto flex items-center gap-2 text-sm text-gray-500">
+            <label className="flex items-center gap-2 text-sm text-gray-500 sm:ml-auto">
               Sort by:
               <select
                 value={sort}

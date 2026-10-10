@@ -144,6 +144,8 @@ export default function ProductDetails() {
               <button
                 key={image}
                 onClick={() => setImageIndex(index)}
+                aria-label={`View image ${index + 1} of ${images.length}`}
+                aria-current={index === imageIndex ? "true" : undefined}
                 className={`h-16 w-16 shrink-0 rounded border-2 ${
                   index === imageIndex ? "border-gray-800" : "border-transparent"
                 }`}

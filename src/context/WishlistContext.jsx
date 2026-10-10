@@ -23,7 +23,9 @@ export function WishlistProvider({ children }) {
     }
     setLoading(true);
     loadWishlist()
-      .catch((err) => showToast(err.message, "error"))
+      .catch((err) =>
+        showToast(err instanceof TypeError ? "You appear to be offline. Please try again." : err.message, "error")
+      )
       .finally(() => setLoading(false));
   }, [user?.id]);
 

@@ -68,10 +68,10 @@ export default function Register() {
 
   return (
     <section className="mx-auto grid max-w-6xl items-start gap-12 px-6 py-14 lg:grid-cols-2">
-      <div>
-        <h1 className="text-3xl font-bold text-gray-800">
+      <div className="hidden lg:block">
+        <h2 className="text-3xl font-bold text-gray-800">
           Welcome to <span className="text-green-600">FreshCart</span>
-        </h1>
+        </h2>
         <p className="mt-2 text-gray-600">
           Join thousands of happy customers who enjoy fresh groceries delivered right to their doorstep.
         </p>
@@ -99,7 +99,7 @@ export default function Register() {
       </div>
 
       <div className="rounded-2xl bg-white p-8 shadow-xl">
-        <h2 className="text-center text-2xl font-bold text-gray-800">Create Your Account</h2>
+        <h1 className="text-center text-2xl font-bold text-gray-800">Create Your Account</h1>
         <p className="mt-1 text-center text-sm text-gray-600">Start your fresh journey with us today</p>
 
         <div className="mt-6 grid grid-cols-2 gap-3">

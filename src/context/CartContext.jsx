@@ -33,7 +33,9 @@ export function CartProvider({ children }) {
     cartService
       .getCart()
       .then((response) => setCart(toCart(response)))
-      .catch((err) => showToast(err.message, "error"))
+      .catch((err) =>
+        showToast(err instanceof TypeError ? "You appear to be offline. Please try again." : err.message, "error")
+      )
       .finally(() => setLoading(false));
   }, [user?.id]);
 

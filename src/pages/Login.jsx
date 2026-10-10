@@ -54,7 +54,7 @@ export default function Login() {
 
   return (
     <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-14 lg:grid-cols-2">
-      <div className="text-center">
+      <div className="hidden text-center lg:block">
         <img src={illustration} alt="Shopping cart full of fresh groceries" className="mx-auto w-full max-w-md rounded-2xl" />
         <h2 className="mt-6 text-2xl font-bold text-gray-800">
           FreshCart - Your One-Stop Shop for Fresh Products

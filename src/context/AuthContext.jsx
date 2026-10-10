@@ -1,7 +1,8 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
-import { clearToken, getProfile, getToken, saveProfile, saveToken } from "../services/api.js";
+import { clearToken, getSession, getProfile, getToken, saveProfile, saveSession, saveToken } from "../services/api.js";
 import { signIn, verifyToken } from "../services/auth.js";
 import { getUser } from "../services/user.js";
+import { useToast } from "./ToastContext.jsx";
 
 const AuthContext = createContext(null);
 
@@ -24,12 +25,14 @@ function mergeServerUser(current, data) {
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { showToast } = useToast();
   // Guards against firing the same profile lookup twice.
   const requestedFor = useRef(null);
 
   // The JWT only carries id, name and role, so the stored email and phone are
   // read once per account. Failures leave the existing profile untouched.
   async function loadAccount(decoded) {
+    if (decoded) saveSession(decoded);
     const restored = withProfile(decoded);
     setUser(restored);
     if (!restored.id || requestedFor.current === restored.id) return;
@@ -57,7 +60,27 @@ export function AuthProvider({ children }) {
     }
     verifyToken()
       .then((data) => loadAccount(data.decoded))
-      .catch(() => clearToken())
+      .catch((error) => {
+        // A dropped connection is not proof the session ended, so the token is
+        // only discarded when the server actually rejected it.
+        const rejected = error.status === 401 || error.status === 403;
+        if (rejected) {
+          clearToken();
+          showToast("Your session has expired, please sign in again.", "error");
+          return;
+        }
+        // Restore the last session the server confirmed so a temporary outage
+        // does not sign the user out. Any later successful request still
+        // re-validates the token and clears it if the server rejects it.
+        const cached = getSession();
+        if (cached) loadAccount(cached);
+        showToast(
+          error instanceof TypeError
+            ? "You appear to be offline. Your session has been kept, please try again."
+            : "We could not verify your session, please try again.",
+          "error"
+        );
+      })
       .finally(() => setLoading(false));
   }, []);
 

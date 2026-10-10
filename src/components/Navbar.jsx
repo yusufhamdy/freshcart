@@ -57,7 +57,7 @@ export default function Navbar({ categories = [] }) {
 
   const badge = (count, color) =>
     count > 0 && (
-      <span className={`absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-[10px] font-semibold text-white ${color}`}>
+      <span className={`absolute -right-2 -top-4 flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-[10px] font-semibold text-white ${color}`}>
         {count}
       </span>
     );
@@ -136,10 +136,13 @@ export default function Navbar({ categories = [] }) {
             Shop
           </NavLink>
           <div className="group relative">
-            <span className="flex cursor-pointer items-center gap-1 text-sm font-medium text-gray-800 group-hover:text-green-600">
+            <button
+              type="button"
+              className="flex cursor-pointer items-center gap-1 text-sm font-medium text-gray-800 group-hover:text-green-600"
+            >
               Categories <FaChevronDown className="text-[10px]" />
-            </span>
-            <div className="invisible absolute left-0 top-full z-20 min-w-44 translate-y-2 rounded-lg border border-gray-200 bg-white py-2 opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+            </button>
+            <div className="invisible absolute left-0 top-full z-20 min-w-44 translate-y-2 rounded-lg border border-gray-200 bg-white py-2 opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
               <Link to="/categories" className="block px-4 py-2 text-sm hover:text-green-600">
                 All Categories
               </Link>

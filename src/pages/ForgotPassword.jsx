@@ -85,7 +85,7 @@ export default function ForgotPassword() {
 
   return (
     <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-14 lg:grid-cols-2">
-      <div className="min-w-0 text-center">
+      <div className="hidden min-w-0 text-center lg:block">
         <div className="mx-auto flex h-60 max-w-md items-center justify-center rounded-2xl bg-green-50">
           <span className="flex h-24 w-24 items-center justify-center rounded-2xl bg-white text-4xl text-green-600 shadow-lg">
             <FaLock />
